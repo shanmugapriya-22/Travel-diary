@@ -113,7 +113,7 @@ app.post("/image-upload",upload.single("image"),async(req,res)=>{
         if(!req.file){
             return res.status(400).json({error:true,message:"No image uploaded"});
         }
-        const imageUrl=`http://localhost:8000/uploads/${req.file.filename}`;
+        const imageUrl=`https://travel-diary-eesd.onrender.com/uploads/${req.file.filename}`;
         res.status(200).json({imageUrl});
     }catch(error){
         res.status(500).json({error:true,message:error.message});
@@ -214,7 +214,7 @@ app.put("/edit-story/:id", authenticateToken, async (req, res) => {
             return res.status(404).json({ error: true, message: "Travel story not found" });
         }
 
-        const placeholderImgUrl = `http://localhost:8000/assets/placeholder.jpeg`;
+        const placeholderImgUrl = `https://travel-diary-eesd.onrender.com/assets/placeholder.jpeg`;
         travelStory.title = title;
         travelStory.story = story;
         travelStory.visitedLocation = visitedLocation; // Fixed spelling here
