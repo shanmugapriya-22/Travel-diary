@@ -1,13 +1,14 @@
 require("dotenv").config();
 const config=require("./config.json");
 const mongoose=require("mongoose");
-const bcrypt=require("bcrypt");
+const bcrypt=require("bcryptjs");
 const express=require("express");
 const cors=require("cors");
 const jwt=require("jsonwebtoken");
 const upload=require("./multer");
 const fs=require("fs");
 const path = require("path");
+import connectCloudinary from "./cloudinary";
 
 const{authenticateToken} =require("./utilities");
 const User=require("./models/user.model");
@@ -15,6 +16,7 @@ const TravelStory=require("./models/travelStory.model");
 const travelStoryModel = require("./models/travelStory.model");
 
 mongoose.connect(process.env.connectionString);
+connectCloudinary()
 
 
 
